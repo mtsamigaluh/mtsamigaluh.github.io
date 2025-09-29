@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MT.SAMIGALUH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg:#0f1724; --text:#f8fafc; --card:#1e293b; --muted:#cbd5e1;
+      --accent:#60a5fa; --glass: rgba(255,255,255,0.06);
+    }
+    [data-theme="light"] {
+      --bg:#f6f8fb; --text:#1e293b; --card:#ffffff; --muted:#475569;
+      --accent:#2563eb; --glass: rgba(0,0,0,0.04);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;
+    }
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .avatar{width:64px;height:64px;border-radius:12px;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    h1{font-size:22px}
+    p.lead{color:var(--muted);font-size:14px}
+    .controls{display:flex;gap:10px}
+    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.08);color:var(--text);
+      padding:8px 12px;border-radius:10px;cursor:pointer;backdrop-filter:blur(6px);}
+    .btn i{margin-right:6px}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:26px;align-items:center;margin-bottom:32px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.04), transparent);padding:20px;
+      border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.06)}
+    .intro h2{font-size:28px;margin-bottom:8px}
+    .typewriter{color:var(--accent)}
+    .bio{color:var(--muted);margin-top:12px;line-height:1.5}
+    ul{margin:10px 0 15px 18px}
+    .skills{margin-top:16px}
+    .skill{margin-bottom:12px}
+    .skill .label{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+    .bar{height:10px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#7c3aed);border-radius:999px}
+    .gallery{margin-top:28px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery-item{position:relative;border-radius:10px;overflow:hidden;cursor:pointer}
+    .gallery-item img{width:100%;height:140px;object-fit:cover;display:block;transition:transform .45s ease}
+    .gallery-item:hover img{transform:scale(1.06)}
+    .badge{position:absolute;left:8px;top:8px;padding:6px 8px;border-radius:8px;font-size:12px;background:rgba(0,0,0,0.55);color:#fff}
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+      background:rgba(2,6,23,0.9);z-index:999;flex-direction:column}
+    .lightbox img{max-width:90%;max-height:80%;border-radius:10px;transition:transform .3s ease}
+    .close-light{position:absolute;right:20px;top:18px;color:#fff;font-size:28px;cursor:pointer}
+    .nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:40px;
+      padding:10px;cursor:pointer;user-select:none}
+    .nav.prev{left:20px}
+    .nav.next{right:20px}
+    .projects{margin-top:28px}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .project-card{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:var(--glass);cursor:pointer}
+    .project-thumb{width:120px;height:80px;border-radius:10px;overflow:hidden}
+    .project-thumb img{width:100%;height:100%;object-fit:cover}
+    footer{margin-top:36px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+    .socials a{margin-left:12px;color:var(--muted);text-decoration:none}
+    .music{position:fixed;right:18px;bottom:18px;background:var(--card);padding:12px;border-radius:14px;
+      box-shadow:0 8px 30px rgba(2,6,23,0.6);display:flex;gap:12px;align-items:center;border:1px solid rgba(255,255,255,0.08)}
+    .music button{border:none;background:transparent;color:var(--accent);font-size:18px;cursor:pointer}
+    .music .progress{width:180px;height:6px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden}
+    .music .progress > i{height:100%;display:block;width:0;background:linear-gradient(90deg,var(--accent),#a78bfa)}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .projects-grid{grid-template-columns:1fr}
+      .container{padding:18px}
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="container">
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="avatar">
+          <img src="./img/asset/my-avatar.jpg" alt="Foto Elyas">
+        </div>
+        <div>
+          <h1>MT.SAMIGALUH</h1>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="toggle-theme"><i class="fas fa-moon"></i> Tema</button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="intro card">
+        <h2>WELCOME <span class="typewriter">GUYS👋 -</span></h2>
+        <p style="margin-bottom: 10px;"><b>Just for fun ya guys</b>, berisi arsip-arsip dan kenangan mt desa Samigaluh, Kulon Progo, DIY</p>
+<p style="margin-bottom: 50px;">banyak suka duka kita alami bersama, dan kita harus berusahan bertahan dengan segala tekanan yang ada, tugas tak melulu tentang enak atau tidaknya tempat yang kita tinggali, atau orang-orang yang kita gauli, tetapi ini tentang bagaimana merubah diri sendiri dan orang-orang yang di sekitar kita menjadi jauh lebih baik</p>
+        <div class="skills">
+          <h3>MEMBER 2025</h3>
+          <!-- daftar member -->
+          <div class="skill"><div class="label"><span>Chandra</span><span>Kebonharjo</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="skill"><div class="label"><span>Zaenab</span><span>Kalirejo</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="skill"><div class="label"><span>Rosita</span><span>Suren</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="skill"><div class="label"><span>Elyas</span><span>Pagerharjo</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="skill"><div class="label"><span>Royan</span><span>Separang</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="skill"><div class="label"><span>Ahmada</span><span>Pengos</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery card">
+      <h3>Galeri Foto</h3>
+      <p></p>
+      <div class="gallery-grid">
+                <div class="gallery-item" data-images='["foto6.jpg","foto7.jpg","foto8.jpg","foto9.jpg"]'>
+          <img src="foto6.jpg" alt="Malioboro"><span class="badge">12 Agustus 2025</span>
+        </div>
+        <div class="gallery-item" data-images='["foto6.jpg","foto7.jpg","foto8.jpg","foto9.jpg"]'>
+          <img src="foto6.jpg" alt="Perpisahan Renol"><span class="badge">21 Juli 2025</span>
+        </div>
+        <div class="gallery-item" data-images='["foto6.jpg","foto7.jpg","foto8.jpg","foto9.jpg"]'>
+          <img src="foto6.jpg" alt="Pasar Malem Dekso"><span class="badge">18 Juni 2025</span>
+        </div>
+        <div class="gallery-item" data-images='["foto4.jpg","foto5.jpg"]'>
+          <img src="foto4.jpg" alt="widosari"><span class="badge">21 April 2025</span>
+        </div>
+                <div class="gallery-item" data-images='["foto1.jpg","foto2.jpg","foto3.jpg"]'>
+          <img src="foto1.jpg" alt="Pinus"><span class="badge">17 April 2025</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects card">
+      <h3>PURNA TUGAS</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-thumb"><img src="./img/purna/septii.jpg" alt=""></div>
+          <div><h4>Mbak Septii!</h4><p>September 2025</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>@c september 2025</p>
+      <div class="socials">
+        <p>sosmed</p>
+        <a href="https://instagram.com/mt.samigaluh"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@mt.samigaluh"><i class="fab fa-tiktok"></i></a>
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-light" id="close-light">&times;</span>
+    <span class="nav prev" id="prev">&#10094;</span>
+    <span class="nav next" id="next">&#10095;</span>
+    <img src="" alt="preview" id="lightbox-img">
+  </div>
+
+  <!-- MUSIC PLAYER -->
+  <div class="music" id="music-player">
+    <button id="toggle-play"><i class="fas fa-play"></i></button>
+    <div class="progress"><i id="music-progress"></i></div>
+    <audio id="audio" src="lagu.mp3"></audio>
+  </div>
+
+  <script>
+    // Toggle Theme
+    const body = document.body;
+    const themeBtn = document.getElementById('toggle-theme');
+    themeBtn.addEventListener('click', () => {
+      body.dataset.theme = body.dataset.theme === 'dark' ? 'light' : 'dark';
+    });
+
+    // Lightbox Galeri dengan Swipe
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeLight = document.getElementById("close-light");
+    const nextBtn = document.getElementById("next");
+    const prevBtn = document.getElementById("prev");
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll(".gallery-item").forEach(item=>{
+      item.addEventListener("click", ()=>{
+        currentGallery = JSON.parse(item.dataset.images);
+        currentIndex = 0;
+        showImage();
+        lightbox.style.display="flex";
+      });
+    });
+
+    function showImage(){
+      lightboxImg.src = currentGallery[currentIndex];
+    }
+
+    nextBtn.addEventListener("click", ()=>{
+      currentIndex = (currentIndex+1) % currentGallery.length;
+      showImage();
+    });
+
+    prevBtn.addEventListener("click", ()=>{
+      currentIndex = (currentIndex-1+currentGallery.length) % currentGallery.length;
+      showImage();
+    });
+
+    closeLight.addEventListener("click", ()=>lightbox.style.display="none");
+
+    // swipe gesture di mobile
+    let startX=0;
+    lightboxImg.addEventListener("touchstart",(e)=>{ startX=e.touches[0].clientX; });
+    lightboxImg.addEventListener("touchend",(e)=>{
+      let endX=e.changedTouches[0].clientX;
+      if(startX-endX>50){ nextBtn.click(); }      // geser kiri -> next
+      if(endX-startX>50){ prevBtn.click(); }      // geser kanan -> prev
+    });
+
+    // Music Player
+    const audio = document.getElementById('audio');
+    const togglePlay = document.getElementById('toggle-play');
+    const progress = document.getElementById('music-progress');
+    togglePlay.addEventListener('click', () => {
+      if(audio.paused){ audio.play(); togglePlay.innerHTML='<i class="fas fa-pause"></i>'; }
+      else{ audio.pause(); togglePlay.innerHTML='<i class="fas fa-play"></i>'; }
+    });
+    audio.addEventListener('timeupdate', () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = percent + '%';
+    });
+  </script>
+</body>
+</html>
